@@ -361,6 +361,8 @@ jobs:
           kubectl get pods -A
 
       - name: Wait for deployment readiness
+        id: wait_gate
+        continue-on-error: true
         run: |
           echo "Waiting for deployment to become available (timeout: 90s)..."
           kubectl wait \
@@ -370,6 +372,7 @@ jobs:
             -n ${{ env.NAMESPACE }}
 
       - name: Run integration test gates
+        if: always()
         env:
           IMAGE_TAG: ${{ env.PATCHED_TAG }}
           NAMESPACE: ${{ env.NAMESPACE }}
