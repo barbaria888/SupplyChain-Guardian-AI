@@ -1,13 +1,3 @@
-# ⚠️  INTENTIONALLY VULNERABLE BASE IMAGE — PIPELINE TEST FIXTURE ⚠️
-#
-# This Dockerfile uses python:3.9-alpine which contains multiple known CVEs
-# (e.g., outdated OpenSSL, libexpat, and setuptools versions).
-# It is the BEFORE state that the Supply Chain Guardian pipeline will detect
-# and automatically patch to a safe, current base image.
-#
-# DO NOT update this file manually. Let the pipeline demonstrate the fix.
-# ---------------------------------------------------------------------------
-
 FROM python:3.9-alpine
 
 # Metadata
